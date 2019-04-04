@@ -1,0 +1,51 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Index.Master.cs" Inherits="MisOfertas.Inde" %>
+
+<!doctype html>
+<html lang="es">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link href="Content/Site.css" rel="stylesheet" />
+    <title>Mis Ofertas</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+
+    <div class="card text-center text-white bg-dark">
+        <div class="card-header">
+            Contacto ...
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Titulo</h5>
+            <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti odio a expedita et
+      doloremque eum saepe nostrum dolorum voluptate consequatur quasi, ex illum atque cum dicta iusto, nam culpa ut!
+            </p>
+            <a href="#" class="btn btn-primary">Algo ...</a>
+        </div>
+        <div class="card-footer text-muted">
+            2019
+        </div>
+    </div>
+
+    </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="Scripts/app.js"></script>
+</body>
+</html>
+
+

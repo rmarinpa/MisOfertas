@@ -1,0 +1,9 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+.container-fluid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*.bg-navbar {
+    background-color: #ff0000;
+}*/

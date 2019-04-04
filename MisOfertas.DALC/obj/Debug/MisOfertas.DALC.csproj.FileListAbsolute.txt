@@ -1,0 +1,6 @@
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.DALC\bin\Debug\MisOfertas.DALC.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.DALC\bin\Debug\MisOfertas.DALC.pdb
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.DALC\obj\Debug\MisOfertas.DALC.csprojAssemblyReference.cache
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.DALC\obj\Debug\MisOfertas.DALC.csproj.CoreCompileInputs.cache
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.DALC\obj\Debug\MisOfertas.DALC.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.DALC\obj\Debug\MisOfertas.DALC.pdb

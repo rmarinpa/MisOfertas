@@ -1,0 +1,6 @@
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.Negocio.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.Negocio.pdb
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.csprojAssemblyReference.cache
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.pdb
