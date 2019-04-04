@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CAMPAIGN">
+          <Key>
+            <PropertyRef Name="ID_CAMPAIGN" />
+          </Key>
+          <Property Name="ID_CAMPAIGN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" />
+          <Property Name="FECHA_INICIO" Type="date" />
+          <Property Name="FECHA_FIN" Type="date" />
+          <Property Name="TIENDA_ID_TIENDA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CIUDAD">
+          <Key>
+            <PropertyRef Name="ID_CIUDAD" />
+          </Key>
+          <Property Name="ID_CIUDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="OFERTAS">
+          <Key>
+            <PropertyRef Name="ID_OFERTAS" />
+          </Key>
+          <Property Name="ID_OFERTAS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" />
+          <Property Name="PORCENTAJE_DESCUENTO" Type="number" Precision="38" Scale="0" />
+          <Property Name="PRODUCTOS_ID_PRODUCTOS" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDEN_VENTA">
+          <Key>
+            <PropertyRef Name="ID_ORDEN" />
+          </Key>
+          <Property Name="ID_ORDEN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FOLIO" Type="number" Precision="38" Scale="0" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="PRODUCTOS_ID_PRODUCTOS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIENDA_ID_TIENDA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTOS">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTOS" />
+          </Key>
+          <Property Name="ID_PRODUCTOS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar2" MaxLength="255" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" />
+          <Property Name="PRECIO" Type="number" Precision="38" Scale="0" />
+          <Property Name="TIENDA_ID_TIENDA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPO_PRODUCTO_ID_TIPOPRODUCTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIENDA">
+          <Key>
+            <PropertyRef Name="ID_TIENDA" />
+          </Key>
+          <Property Name="ID_TIENDA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_TIENDA" Type="varchar2" MaxLength="255" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="255" />
+          <Property Name="TELEFONO" Type="number" Precision="38" Scale="0" />
+          <Property Name="CIUDAD_ID_CIUDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_TIPOPRODUCTO" />
+          </Key>
+          <Property Name="ID_TIPOPRODUCTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPOPRODUCTO" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TRABAJADOR">
+          <Key>
+            <PropertyRef Name="ID_TRABAJADOR" />
+          </Key>
+          <Property Name="ID_TRABAJADOR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="255" />
+          <Property Name="NOMBRES" Type="varchar2" MaxLength="255" />
+          <Property Name="APELLIDOS" Type="varchar2" MaxLength="255" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="255" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="255" />
+          <Property Name="TIENDA_ID_TIENDA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="255" />
+          <Property Name="APELLIDOS" Type="varchar2" MaxLength="255" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="255" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="255" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="255" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <Association Name="CAMPAIGN_TIENDA_FK">
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="1" />
+          <End Role="CAMPAIGN" Type="Self.CAMPAIGN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIENDA">
+              <PropertyRef Name="ID_TIENDA" />
+            </Principal>
+            <Dependent Role="CAMPAIGN">
+              <PropertyRef Name="TIENDA_ID_TIENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OFERTAS_PRODUCTOS_FK">
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="1" />
+          <End Role="OFERTAS" Type="Self.OFERTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTOS" />
+            </Principal>
+            <Dependent Role="OFERTAS">
+              <PropertyRef Name="PRODUCTOS_ID_PRODUCTOS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ORDEN_VENTA_PRODUCTOS_FK">
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="1" />
+          <End Role="ORDEN_VENTA" Type="Self.ORDEN_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTOS" />
+            </Principal>
+            <Dependent Role="ORDEN_VENTA">
+              <PropertyRef Name="PRODUCTOS_ID_PRODUCTOS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ORDEN_VENTA_TIENDA_FK">
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="1" />
+          <End Role="ORDEN_VENTA" Type="Self.ORDEN_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIENDA">
+              <PropertyRef Name="ID_TIENDA" />
+            </Principal>
+            <Dependent Role="ORDEN_VENTA">
+              <PropertyRef Name="TIENDA_ID_TIENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTOS_TIENDA_FK">
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="1" />
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIENDA">
+              <PropertyRef Name="ID_TIENDA" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="TIENDA_ID_TIENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTOS_TIPO_PRODUCTO_FK">
+          <End Role="TIPO_PRODUCTO" Type="Self.TIPO_PRODUCTO" Multiplicity="1" />
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_PRODUCTO">
+              <PropertyRef Name="ID_TIPOPRODUCTO" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="TIPO_PRODUCTO_ID_TIPOPRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TIENDA_CIUDAD_FK">
+          <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="1" />
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="TIENDA">
+              <PropertyRef Name="CIUDAD_ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRABAJADOR_TIENDA_FK">
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="1" />
+          <End Role="TRABAJADOR" Type="Self.TRABAJADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIENDA">
+              <PropertyRef Name="ID_TIENDA" />
+            </Principal>
+            <Dependent Role="TRABAJADOR">
+              <PropertyRef Name="TIENDA_ID_TIENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="CAMPAIGN" EntityType="Self.CAMPAIGN" Schema="MISOFERTAS_ADMIN" store:Type="Tables" />
+          <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" Schema="MISOFERTAS_ADMIN" store:Type="Tables" />
+          <EntitySet Name="OFERTAS" EntityType="Self.OFERTAS" Schema="MISOFERTAS_ADMIN" store:Type="Tables" />
+          <EntitySet Name="ORDEN_VENTA" EntityType="Self.ORDEN_VENTA" Schema="MISOFERTAS_ADMIN" store:Type="Tables" />
+          <EntitySet Name="PRODUCTOS" EntityType="Self.PRODUCTOS" Schema="MISOFERTAS_ADMIN" store:Type="Tables" />
+          <EntitySet Name="TIENDA" EntityType="Self.TIENDA" Schema="MISOFERTAS_ADMIN" store:Type="Tables" />
+          <EntitySet Name="TIPO_PRODUCTO" EntityType="Self.TIPO_PRODUCTO" Schema="MISOFERTAS_ADMIN" store:Type="Tables" />
+          <EntitySet Name="TRABAJADOR" EntityType="Self.TRABAJADOR" Schema="MISOFERTAS_ADMIN" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="MISOFERTAS_ADMIN" store:Type="Tables" />
+          <AssociationSet Name="CAMPAIGN_TIENDA_FK" Association="Self.CAMPAIGN_TIENDA_FK">
+            <End Role="TIENDA" EntitySet="TIENDA" />
+            <End Role="CAMPAIGN" EntitySet="CAMPAIGN" />
+          </AssociationSet>
+          <AssociationSet Name="OFERTAS_PRODUCTOS_FK" Association="Self.OFERTAS_PRODUCTOS_FK">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="OFERTAS" EntitySet="OFERTAS" />
+          </AssociationSet>
+          <AssociationSet Name="ORDEN_VENTA_PRODUCTOS_FK" Association="Self.ORDEN_VENTA_PRODUCTOS_FK">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="ORDEN_VENTA" EntitySet="ORDEN_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="ORDEN_VENTA_TIENDA_FK" Association="Self.ORDEN_VENTA_TIENDA_FK">
+            <End Role="TIENDA" EntitySet="TIENDA" />
+            <End Role="ORDEN_VENTA" EntitySet="ORDEN_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTOS_TIENDA_FK" Association="Self.PRODUCTOS_TIENDA_FK">
+            <End Role="TIENDA" EntitySet="TIENDA" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTOS_TIPO_PRODUCTO_FK" Association="Self.PRODUCTOS_TIPO_PRODUCTO_FK">
+            <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="TIENDA_CIUDAD_FK" Association="Self.TIENDA_CIUDAD_FK">
+            <End Role="CIUDAD" EntitySet="CIUDAD" />
+            <End Role="TIENDA" EntitySet="TIENDA" />
+          </AssociationSet>
+          <AssociationSet Name="TRABAJADOR_TIENDA_FK" Association="Self.TRABAJADOR_TIENDA_FK">
+            <End Role="TIENDA" EntitySet="TIENDA" />
+            <End Role="TRABAJADOR" EntitySet="TRABAJADOR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CAMPAIGN">
+          <Key>
+            <PropertyRef Name="ID_CAMPAIGN" />
+          </Key>
+          <Property Name="ID_CAMPAIGN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_INICIO" Type="DateTime" />
+          <Property Name="FECHA_FIN" Type="DateTime" />
+          <Property Name="TIENDA_ID_TIENDA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TIENDA" Relationship="Self.CAMPAIGN_TIENDA_FK" FromRole="CAMPAIGN" ToRole="TIENDA" />
+        </EntityType>
+        <EntityType Name="CIUDAD">
+          <Key>
+            <PropertyRef Name="ID_CIUDAD" />
+          </Key>
+          <Property Name="ID_CIUDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TIENDA" Relationship="Self.TIENDA_CIUDAD_FK" FromRole="CIUDAD" ToRole="TIENDA" />
+        </EntityType>
+        <EntityType Name="OFERTAS">
+          <Key>
+            <PropertyRef Name="ID_OFERTAS" />
+          </Key>
+          <Property Name="ID_OFERTAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PORCENTAJE_DESCUENTO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PRODUCTOS_ID_PRODUCTOS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="Self.OFERTAS_PRODUCTOS_FK" FromRole="OFERTAS" ToRole="PRODUCTOS" />
+        </EntityType>
+        <EntityType Name="ORDEN_VENTA">
+          <Key>
+            <PropertyRef Name="ID_ORDEN" />
+          </Key>
+          <Property Name="ID_ORDEN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FOLIO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="FECHA" Type="DateTime" />
+          <Property Name="PRODUCTOS_ID_PRODUCTOS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIENDA_ID_TIENDA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="Self.ORDEN_VENTA_PRODUCTOS_FK" FromRole="ORDEN_VENTA" ToRole="PRODUCTOS" />
+          <NavigationProperty Name="TIENDA" Relationship="Self.ORDEN_VENTA_TIENDA_FK" FromRole="ORDEN_VENTA" ToRole="TIENDA" />
+        </EntityType>
+        <EntityType Name="PRODUCTOS">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTOS" />
+          </Key>
+          <Property Name="ID_PRODUCTOS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TIENDA_ID_TIENDA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPO_PRODUCTO_ID_TIPOPRODUCTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="OFERTAS" Relationship="Self.OFERTAS_PRODUCTOS_FK" FromRole="PRODUCTOS" ToRole="OFERTAS" />
+          <NavigationProperty Name="ORDEN_VENTA" Relationship="Self.ORDEN_VENTA_PRODUCTOS_FK" FromRole="PRODUCTOS" ToRole="ORDEN_VENTA" />
+          <NavigationProperty Name="TIENDA" Relationship="Self.PRODUCTOS_TIENDA_FK" FromRole="PRODUCTOS" ToRole="TIENDA" />
+          <NavigationProperty Name="TIPO_PRODUCTO" Relationship="Self.PRODUCTOS_TIPO_PRODUCTO_FK" FromRole="PRODUCTOS" ToRole="TIPO_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="TIENDA">
+          <Key>
+            <PropertyRef Name="ID_TIENDA" />
+          </Key>
+          <Property Name="ID_TIENDA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_TIENDA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CIUDAD_ID_CIUDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CAMPAIGN" Relationship="Self.CAMPAIGN_TIENDA_FK" FromRole="TIENDA" ToRole="CAMPAIGN" />
+          <NavigationProperty Name="CIUDAD" Relationship="Self.TIENDA_CIUDAD_FK" FromRole="TIENDA" ToRole="CIUDAD" />
+          <NavigationProperty Name="ORDEN_VENTA" Relationship="Self.ORDEN_VENTA_TIENDA_FK" FromRole="TIENDA" ToRole="ORDEN_VENTA" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="Self.PRODUCTOS_TIENDA_FK" FromRole="TIENDA" ToRole="PRODUCTOS" />
+          <NavigationProperty Name="TRABAJADOR" Relationship="Self.TRABAJADOR_TIENDA_FK" FromRole="TIENDA" ToRole="TRABAJADOR" />
+        </EntityType>
+        <EntityType Name="TIPO_PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_TIPOPRODUCTO" />
+          </Key>
+          <Property Name="ID_TIPOPRODUCTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPOPRODUCTO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="Self.PRODUCTOS_TIPO_PRODUCTO_FK" FromRole="TIPO_PRODUCTO" ToRole="PRODUCTOS" />
+        </EntityType>
+        <EntityType Name="TRABAJADOR">
+          <Key>
+            <PropertyRef Name="ID_TRABAJADOR" />
+          </Key>
+          <Property Name="ID_TRABAJADOR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRES" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TIENDA_ID_TIENDA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TIENDA" Relationship="Self.TRABAJADOR_TIENDA_FK" FromRole="TRABAJADOR" ToRole="TIENDA" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="CAMPAIGN_TIENDA_FK">
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="1" />
+          <End Role="CAMPAIGN" Type="Self.CAMPAIGN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIENDA">
+              <PropertyRef Name="ID_TIENDA" />
+            </Principal>
+            <Dependent Role="CAMPAIGN">
+              <PropertyRef Name="TIENDA_ID_TIENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TIENDA_CIUDAD_FK">
+          <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="1" />
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="TIENDA">
+              <PropertyRef Name="CIUDAD_ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OFERTAS_PRODUCTOS_FK">
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="1" />
+          <End Role="OFERTAS" Type="Self.OFERTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTOS" />
+            </Principal>
+            <Dependent Role="OFERTAS">
+              <PropertyRef Name="PRODUCTOS_ID_PRODUCTOS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ORDEN_VENTA_PRODUCTOS_FK">
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="1" />
+          <End Role="ORDEN_VENTA" Type="Self.ORDEN_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTOS" />
+            </Principal>
+            <Dependent Role="ORDEN_VENTA">
+              <PropertyRef Name="PRODUCTOS_ID_PRODUCTOS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ORDEN_VENTA_TIENDA_FK">
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="1" />
+          <End Role="ORDEN_VENTA" Type="Self.ORDEN_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIENDA">
+              <PropertyRef Name="ID_TIENDA" />
+            </Principal>
+            <Dependent Role="ORDEN_VENTA">
+              <PropertyRef Name="TIENDA_ID_TIENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTOS_TIENDA_FK">
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="1" />
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIENDA">
+              <PropertyRef Name="ID_TIENDA" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="TIENDA_ID_TIENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTOS_TIPO_PRODUCTO_FK">
+          <End Role="TIPO_PRODUCTO" Type="Self.TIPO_PRODUCTO" Multiplicity="1" />
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_PRODUCTO">
+              <PropertyRef Name="ID_TIPOPRODUCTO" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="TIPO_PRODUCTO_ID_TIPOPRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRABAJADOR_TIENDA_FK">
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="1" />
+          <End Role="TRABAJADOR" Type="Self.TRABAJADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIENDA">
+              <PropertyRef Name="ID_TIENDA" />
+            </Principal>
+            <Dependent Role="TRABAJADOR">
+              <PropertyRef Name="TIENDA_ID_TIENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAMPAIGN" EntityType="Self.CAMPAIGN" />
+          <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" />
+          <EntitySet Name="OFERTAS" EntityType="Self.OFERTAS" />
+          <EntitySet Name="ORDEN_VENTA" EntityType="Self.ORDEN_VENTA" />
+          <EntitySet Name="PRODUCTOS" EntityType="Self.PRODUCTOS" />
+          <EntitySet Name="TIENDA" EntityType="Self.TIENDA" />
+          <EntitySet Name="TIPO_PRODUCTO" EntityType="Self.TIPO_PRODUCTO" />
+          <EntitySet Name="TRABAJADOR" EntityType="Self.TRABAJADOR" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <AssociationSet Name="CAMPAIGN_TIENDA_FK" Association="Self.CAMPAIGN_TIENDA_FK">
+            <End Role="TIENDA" EntitySet="TIENDA" />
+            <End Role="CAMPAIGN" EntitySet="CAMPAIGN" />
+          </AssociationSet>
+          <AssociationSet Name="TIENDA_CIUDAD_FK" Association="Self.TIENDA_CIUDAD_FK">
+            <End Role="CIUDAD" EntitySet="CIUDAD" />
+            <End Role="TIENDA" EntitySet="TIENDA" />
+          </AssociationSet>
+          <AssociationSet Name="OFERTAS_PRODUCTOS_FK" Association="Self.OFERTAS_PRODUCTOS_FK">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="OFERTAS" EntitySet="OFERTAS" />
+          </AssociationSet>
+          <AssociationSet Name="ORDEN_VENTA_PRODUCTOS_FK" Association="Self.ORDEN_VENTA_PRODUCTOS_FK">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="ORDEN_VENTA" EntitySet="ORDEN_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="ORDEN_VENTA_TIENDA_FK" Association="Self.ORDEN_VENTA_TIENDA_FK">
+            <End Role="TIENDA" EntitySet="TIENDA" />
+            <End Role="ORDEN_VENTA" EntitySet="ORDEN_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTOS_TIENDA_FK" Association="Self.PRODUCTOS_TIENDA_FK">
+            <End Role="TIENDA" EntitySet="TIENDA" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTOS_TIPO_PRODUCTO_FK" Association="Self.PRODUCTOS_TIPO_PRODUCTO_FK">
+            <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="TRABAJADOR_TIENDA_FK" Association="Self.TRABAJADOR_TIENDA_FK">
+            <End Role="TIENDA" EntitySet="TIENDA" />
+            <End Role="TRABAJADOR" EntitySet="TRABAJADOR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="CAMPAIGN">
+            <EntityTypeMapping TypeName="Model.CAMPAIGN">
+              <MappingFragment StoreEntitySet="CAMPAIGN">
+                <ScalarProperty Name="ID_CAMPAIGN" ColumnName="ID_CAMPAIGN" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+                <ScalarProperty Name="TIENDA_ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CIUDAD">
+            <EntityTypeMapping TypeName="Model.CIUDAD">
+              <MappingFragment StoreEntitySet="CIUDAD">
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OFERTAS">
+            <EntityTypeMapping TypeName="Model.OFERTAS">
+              <MappingFragment StoreEntitySet="OFERTAS">
+                <ScalarProperty Name="ID_OFERTAS" ColumnName="ID_OFERTAS" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="PORCENTAJE_DESCUENTO" ColumnName="PORCENTAJE_DESCUENTO" />
+                <ScalarProperty Name="PRODUCTOS_ID_PRODUCTOS" ColumnName="PRODUCTOS_ID_PRODUCTOS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDEN_VENTA">
+            <EntityTypeMapping TypeName="Model.ORDEN_VENTA">
+              <MappingFragment StoreEntitySet="ORDEN_VENTA">
+                <ScalarProperty Name="ID_ORDEN" ColumnName="ID_ORDEN" />
+                <ScalarProperty Name="FOLIO" ColumnName="FOLIO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="PRODUCTOS_ID_PRODUCTOS" ColumnName="PRODUCTOS_ID_PRODUCTOS" />
+                <ScalarProperty Name="TIENDA_ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTOS">
+            <EntityTypeMapping TypeName="Model.PRODUCTOS">
+              <MappingFragment StoreEntitySet="PRODUCTOS">
+                <ScalarProperty Name="ID_PRODUCTOS" ColumnName="ID_PRODUCTOS" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="TIENDA_ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
+                <ScalarProperty Name="TIPO_PRODUCTO_ID_TIPOPRODUCTO" ColumnName="TIPO_PRODUCTO_ID_TIPOPRODUCTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIENDA">
+            <EntityTypeMapping TypeName="Model.TIENDA">
+              <MappingFragment StoreEntitySet="TIENDA">
+                <ScalarProperty Name="ID_TIENDA" ColumnName="ID_TIENDA" />
+                <ScalarProperty Name="NOMBRE_TIENDA" ColumnName="NOMBRE_TIENDA" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CIUDAD_ID_CIUDAD" ColumnName="CIUDAD_ID_CIUDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_PRODUCTO">
+            <EntityTypeMapping TypeName="Model.TIPO_PRODUCTO">
+              <MappingFragment StoreEntitySet="TIPO_PRODUCTO">
+                <ScalarProperty Name="ID_TIPOPRODUCTO" ColumnName="ID_TIPOPRODUCTO" />
+                <ScalarProperty Name="TIPOPRODUCTO" ColumnName="TIPOPRODUCTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRABAJADOR">
+            <EntityTypeMapping TypeName="Model.TRABAJADOR">
+              <MappingFragment StoreEntitySet="TRABAJADOR">
+                <ScalarProperty Name="ID_TRABAJADOR" ColumnName="ID_TRABAJADOR" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="TIENDA_ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="Model.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -45,7 +45,9 @@
             </div>
             <div class="col-md-3 mb-3">
                 <label>Ciudad</label>
-                <asp:DropDownList ID="ddlCiudad" CssClass="custom-select" runat="server"></asp:DropDownList>
+                
+                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="custom-select" DataSourceID="SqlDataSource1" DataTextField="NOMBRE" DataValueField="ID_CIUDAD"></asp:DropDownList>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;CIUDAD&quot;"></asp:SqlDataSource>
             </div>
             <div class="col-md-3 mb-3">
                 <label>Telefono</label>

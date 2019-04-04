@@ -152,3 +152,14 @@ C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\obj\Debug\MisOf
 C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\obj\Debug\MisOfertas.csproj.CopyComplete
 C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\obj\Debug\MisOfertas.dll
 C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\obj\Debug\MisOfertas.pdb
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\MisOfertas.Negocio.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\MisOfertas.Negocio.pdb
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\EntityFramework.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\MisOfertas.DALC.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\MisOfertas.DALC.pdb
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\MisOfertas.DALC.dll.config
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\EntityFramework.xml
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\EntityFramework.SqlServer.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\EntityFramework.SqlServer.xml
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\Oracle.ManagedDataAccess.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas\bin\Oracle.ManagedDataAccess.EntityFramework.dll

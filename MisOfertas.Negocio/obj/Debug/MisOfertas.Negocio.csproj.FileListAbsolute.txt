@@ -4,3 +4,9 @@ C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\obj\Deb
 C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.csproj.CoreCompileInputs.cache
 C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.dll
 C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.pdb
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\bin\Debug\EntityFramework.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.DALC.dll
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.DALC.pdb
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.DALC.dll.config
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\bin\Debug\EntityFramework.xml
+C:\Users\ricar\Documents\GitHub\MisOfertas\MisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.csproj.CopyComplete

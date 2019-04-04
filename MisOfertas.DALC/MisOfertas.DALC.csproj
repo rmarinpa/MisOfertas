@@ -31,8 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +48,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAMPAIGN.cs">
+      <DependentUpon>MisOfertasEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CIUDAD.cs">
+      <DependentUpon>MisOfertasEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MisOfertasEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MisOfertasEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MisOfertasEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MisOfertasEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MisOfertasEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MisOfertasEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OFERTAS.cs">
+      <DependentUpon>MisOfertasEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDEN_VENTA.cs">
+      <DependentUpon>MisOfertasEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTOS.cs">
+      <DependentUpon>MisOfertasEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TIENDA.cs">
+      <DependentUpon>MisOfertasEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_PRODUCTO.cs">
+      <DependentUpon>MisOfertasEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRABAJADOR.cs">
+      <DependentUpon>MisOfertasEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USUARIO.cs">
+      <DependentUpon>MisOfertasEntities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="MisOfertasEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MisOfertasEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MisOfertasEntities.edmx.diagram">
+      <DependentUpon>MisOfertasEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MisOfertasEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MisOfertasEntities.edmx</DependentUpon>
+      <LastGenOutput>MisOfertasEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MisOfertasEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MisOfertasEntities.edmx</DependentUpon>
+      <LastGenOutput>MisOfertasEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

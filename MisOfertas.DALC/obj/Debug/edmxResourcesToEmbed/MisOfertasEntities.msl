@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="CAMPAIGN">
+      <EntityTypeMapping TypeName="Model.CAMPAIGN">
+        <MappingFragment StoreEntitySet="CAMPAIGN">
+          <ScalarProperty Name="ID_CAMPAIGN" ColumnName="ID_CAMPAIGN" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+          <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+          <ScalarProperty Name="TIENDA_ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CIUDAD">
+      <EntityTypeMapping TypeName="Model.CIUDAD">
+        <MappingFragment StoreEntitySet="CIUDAD">
+          <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OFERTAS">
+      <EntityTypeMapping TypeName="Model.OFERTAS">
+        <MappingFragment StoreEntitySet="OFERTAS">
+          <ScalarProperty Name="ID_OFERTAS" ColumnName="ID_OFERTAS" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="PORCENTAJE_DESCUENTO" ColumnName="PORCENTAJE_DESCUENTO" />
+          <ScalarProperty Name="PRODUCTOS_ID_PRODUCTOS" ColumnName="PRODUCTOS_ID_PRODUCTOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDEN_VENTA">
+      <EntityTypeMapping TypeName="Model.ORDEN_VENTA">
+        <MappingFragment StoreEntitySet="ORDEN_VENTA">
+          <ScalarProperty Name="ID_ORDEN" ColumnName="ID_ORDEN" />
+          <ScalarProperty Name="FOLIO" ColumnName="FOLIO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="PRODUCTOS_ID_PRODUCTOS" ColumnName="PRODUCTOS_ID_PRODUCTOS" />
+          <ScalarProperty Name="TIENDA_ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTOS">
+      <EntityTypeMapping TypeName="Model.PRODUCTOS">
+        <MappingFragment StoreEntitySet="PRODUCTOS">
+          <ScalarProperty Name="ID_PRODUCTOS" ColumnName="ID_PRODUCTOS" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="TIENDA_ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
+          <ScalarProperty Name="TIPO_PRODUCTO_ID_TIPOPRODUCTO" ColumnName="TIPO_PRODUCTO_ID_TIPOPRODUCTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIENDA">
+      <EntityTypeMapping TypeName="Model.TIENDA">
+        <MappingFragment StoreEntitySet="TIENDA">
+          <ScalarProperty Name="ID_TIENDA" ColumnName="ID_TIENDA" />
+          <ScalarProperty Name="NOMBRE_TIENDA" ColumnName="NOMBRE_TIENDA" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD_ID_CIUDAD" ColumnName="CIUDAD_ID_CIUDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_PRODUCTO">
+      <EntityTypeMapping TypeName="Model.TIPO_PRODUCTO">
+        <MappingFragment StoreEntitySet="TIPO_PRODUCTO">
+          <ScalarProperty Name="ID_TIPOPRODUCTO" ColumnName="ID_TIPOPRODUCTO" />
+          <ScalarProperty Name="TIPOPRODUCTO" ColumnName="TIPOPRODUCTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRABAJADOR">
+      <EntityTypeMapping TypeName="Model.TRABAJADOR">
+        <MappingFragment StoreEntitySet="TRABAJADOR">
+          <ScalarProperty Name="ID_TRABAJADOR" ColumnName="ID_TRABAJADOR" />
+          <ScalarProperty Name="RUT" ColumnName="RUT" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="TIENDA_ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="Model.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
